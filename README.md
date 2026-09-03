@@ -12,10 +12,10 @@
 
 - LLM / AI agent 의 성능을 떨어뜨리는 안티 패턴
 - LLM의 한계를 극복할 수 있는 저렴한 방법 
-    → scored-web-search
-    → 프로젝트 문서 관리 탬플릿
-    → pre-defined sub agent
-    → code base analysis
+    - scored-web-search
+    - 프로젝트 문서 관리 탬플릿
+    - pre-defined sub agent
+    - code base analysis
 
 ## Projects & Experiments
 
