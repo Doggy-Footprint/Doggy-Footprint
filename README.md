@@ -42,7 +42,7 @@
 
 - 웹 검색의 품질 문제를 hueristic하게 해결
 - RAG의 knowledge conflict, context rot 완화
-- 겸사겸사 비용도 절감
+- 겸사겸사 비용도 11% 절감 
 
 #### 메인 아이디어 & 성과
 
