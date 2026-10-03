@@ -6,35 +6,25 @@
 - rule-based + LLM-as-a-judge 멀티턴 평가 파이프라인
 - Debian 계열 커스텀 OS 역공학, 빌드 200분 → 15분
 
-📝 [기술 블로그](https://harsh-wavelength-48b.notion.site/1ba2e74ce6218091aca6cc4acb48aaa0?v=1ba2e74ce62180869365000ce56eeed6&source=copy_link) · 📄 [이력서](https://harsh-wavelength-48b.notion.site/Kim-Hwansu-edit-2df2e74ce621809eb6fad67a45fb103f?source=copy_link)
+📝 [기술 블로그](https://blog-steel-ten-13.vercel.app/)
+📄 [이력서](https://harsh-wavelength-48b.notion.site/Kim-Hwansu-edit-2df2e74ce621809eb6fad67a45fb103f?source=copy_link)
 
 ## 지금 관심 있는 문제
 
 - LLM / AI agent 의 성능을 떨어뜨리는 안티 패턴
-- LLM의 한계를 극복할 수 있는 저렴한 방법 
+- LLM의 한계를 극복할 수 있는 방법 
     - scored-web-search
     - 프로젝트 문서 관리 탬플릿
     - pre-defined sub agent
     - code base analysis
+- GPU Cluster에서 LLM 서빙
+- KVCache 선택적 사용 / 삭제 / 편집 (순수 흥미)
 
 ## Projects & Experiments
 
-### [프로젝트 문서 관리 탬플릿](https://github.com/Doggy-Footprint/AI-agent-Template-for-Document-Management)
+### [프로젝트 문서 관리 탬플릿](https://github.com/Doggy-Footprint/harness)
 
-> AI agent를 오래 사용하면 프로젝트에 생기는 문제들을 다뤘습니다.
-
-#### 템플릿 구성
-
-- 문서를 최소화하는 관리 체계
-- 꼭 필요한 문서 (`adr/`, 외부 환경, 컨벤션 등) 관리 및 폐기 규칙
-- Rule base 검사 
-- 비용 효율적인 테스트 독립 검증 sub-agent (`test-verifer`)
-
-#### 성과
-
-- Sonnet 5, GPT-5.6-terra 등 보급형 라인업에서 발생하는 허위 테스트 문제 식별
-- `test-verifier`의 system token은 1/4 수준 → 기대 비용 감소는 35%
-- AI agent를 오래 사용해도 프로젝트 파악에 어려움이 줄어듦
+> AI agent의 한계와 안티 패턴을 피하기 위한 workflow 기반의 harness입니다.
 
 ### [scored-web-search](https://github.com/Doggy-Footprint/scored-web-search)
 
@@ -52,7 +42,7 @@
 - 메인 에이전트가 읽는 source 수를 실험에서 약 1/10로 축소
 - sub-agent overhead를 포함한 전체 비용은 약 11.1% 감소
 
-### code-analyzer — 재작업 중
+### [Network Analysis](https://github.com/Doggy-Footprint/Network-Analysis)
 
 > 내 코드 베이스는 AI agent가 작업하기 좋은 환경일까?
 
@@ -68,15 +58,16 @@
 
 현재는 단순한 dependency 시각화를 넘어 아래 기능을 보완하고 있습니다.
 
-- [ ] AI agent의 탐색 전략·비용·범위 모방
-- [ ] 수정 대상과 관련된 중요 문서·코드·주석을 놓칠 가능성 추정
-- [ ] 구조적 병목 탐지와 수정 방향 제안
+- [x] ~AI agent의 탐색 전략·비용·범위 모방~
+- [x] ~수정 대상과 관련된 중요 문서·코드·주석을 놓칠 가능성 추정~
+- [x] 구조적 병목 탐지와 수정 방향 제안
+- [ ] 다시 의존성 기반의 탐색으로 rollback 
 
 ## 실패에서 시작된 작업들
 
 한 달 동안 계획과 판단을 AI agent에 크게 위임하며 약 86만 원을 사용했지만, 제 기준을 만족한 결과물은 없었습니다. 대신 날짜 감각, 모호성 무시, 지식 충돌, 긴 context, 문서 비대화, 탐색 비용 같은 반복적인 실패 패턴을 발견했습니다.
 
-이 경험은 `scored-web-search`, 문서 관리 템플릿, `code-analyzer`의 출발점이 됐습니다.
+이 경험은 `scored-web-search`, 문서 관리 템플릿, `network-analysis`의 출발점이 됐습니다.
 26년 들어서 개발 속도가 더 빨라졌습니다. 그래서 기존의 **돌다리도 두드려보고 건넌다**를 버리고, **빠르게 만들고, 실패하거나 버그가 생기면 그걸 새로운 기능**으로 만들기로 했습니다.
 
 ## Working principles
