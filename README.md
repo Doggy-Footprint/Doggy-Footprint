@@ -15,20 +15,20 @@
 - LLM의 한계를 극복할 수 있는 방법 
     - scored-web-search
     - 프로젝트 문서 관리 탬플릿
-    - pre-defined sub agent
-    - code base analysis
+    - ISO/IEC 을 통한 개발자 의도의 정리
+    - Test는 reasoning으로 학습하기 어려운 이유와 극복 방법
 - GPU Cluster에서 LLM 서빙
 - KVCache 선택적 사용 / 삭제 / 편집 (순수 흥미)
 
 ## Projects & Experiments
 
-### [프로젝트 문서 관리 탬플릿](https://github.com/Doggy-Footprint/harness)
+### [프로젝트 관리 harness](https://github.com/Doggy-Footprint/harness)
 
-> AI agent의 한계와 안티 패턴을 피하기 위한 workflow 기반의 harness입니다.
+> 문서 관리 및 ISO/IEC 기반 spec 정의, MAS workflow - 문서와 테스트, 사용자 의도의 구체화를 지원하는 하네스
 
 ### [scored-web-search](https://github.com/Doggy-Footprint/scored-web-search)
 
-> 서브 에이전트를 이용해 자료를 수집하고, 스크립트를 이용해 필터링하고, 메인 에이전트는 소수의 선별된 자료만 읽는다.
+> 인용수, 좋아요 수 등 heuristic 정보를 바탕으로 저품질 소스를 web에서 걸러주는 skill
 
 `web-search`의 맹점을 저렴하게 해결한 skill입니다. 
 
@@ -38,7 +38,7 @@
 
 #### 메인 아이디어 & 성과
 
-- LLM은 이미 지식이 많으니 많은 정보를 읽기보다, 필요 없는 정보를 거르는데 집중
+- LLM은 이미 지식이 많으니 많은 정보를 읽기보다, 필요 없는 정보를 거르는데 집중 (precision over recall)
 - 메인 에이전트가 읽는 source 수를 실험에서 약 1/10로 축소
 - sub-agent overhead를 포함한 전체 비용은 약 11.1% 감소
 
@@ -48,7 +48,7 @@
 
 정적 의존성 그래프와 파일별 token 크기를 결합해, AI agent가 코드를 탐색할 때 생기는 구조적 비용을 분석하는 실험입니다.
 
-기존 실험에서는:
+#### 기존 실험에서는
 
 - 약 41만 token 규모의 Kotlin 프로젝트와 실제 agent 탐색 로그를 분석
 - 초기 code exploration 비용을 약 70k → 30k token으로 축소
@@ -56,12 +56,10 @@
 - PageRank와 2-hop 탐색 비용을 이용해 구조적 병목 후보를 식별
 - 리팩터링 후 새롭게 드러난 중심 파일을 다음 개선 대상으로 특정
 
-현재는 단순한 dependency 시각화를 넘어 아래 기능을 보완하고 있습니다.
+#### AI agent의 동작 모방 후 rollback
 
-- [x] ~AI agent의 탐색 전략·비용·범위 모방~
-- [x] ~수정 대상과 관련된 중요 문서·코드·주석을 놓칠 가능성 추정~
-- [x] 구조적 병목 탐지와 수정 방향 제안
-- [ ] 다시 의존성 기반의 탐색으로 rollback 
+`code explore`의 동작을 모방하는 network를 통해 분석을 시도했으나, agentic runtime이 업데이트 되는 것을 보고 방향성을 포기함.
+의존성 + framework 기반 정보 및 git diff 등을 통해 AI agent에 **제안**할 병목 지점을 전달.
 
 ## 실패에서 시작된 작업들
 
@@ -73,6 +71,6 @@
 ## Working principles
 
 - AI를 신뢰하지 않지만, 모든 것을 사람이 다시 검증하는 방식도 목표로 삼지 않습니다.
-- 모델의 판단보다 결정론적 검사로 해결할 수 있는 경계를 먼저 찾습니다.
+- 모델의 판단보다 결정론적 검사로 해결할 수 있는 방법을 먼저 찾습니다.
 - 성공 사례뿐 아니라 실패 조건과 한계도 함께 기록합니다.
 - 더 많은 context보다, 필요한 정보만 포함한 작은 context를 지향합니다.
