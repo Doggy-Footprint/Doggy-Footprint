@@ -6,7 +6,7 @@
 ## 주요 성과
 
 - **CX 챗봇** — 주간 인입 2,200건 중 타겟 문의의 31.8%, 전체의 15% 자동 처리
-  - prompt engineering, rule-based + LLM-as-a-judge 멀티턴 평가 파이프라인, 레거시 시스템 이식
+  - prompt engineering, prompt 평가 파이프라인, 레거시 시스템 이식
 - **OS 디버깅 환경 자동화** — Debian 계열 커스텀 OS 역공학, 빌드 및 연결 시간 200분 → 15분
 - **보안 프로젝트 리딩** — 12개월 예정 프로젝트를 2개월에 완료 (PKCS#5, KISA 인증)
 
