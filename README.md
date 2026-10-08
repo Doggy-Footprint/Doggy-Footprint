@@ -1,24 +1,31 @@
-> 일단 시도하고, 실패와 버그는 고쳐서 기능으로 만든다.
+> **Build, Break, Learn, Repeat** — 일단 시도하고, 실패와 버그는 고쳐서 기능으로 만든다.
 
-### 주요 성과
-
-- CX 챗봇 설계·배포 (주 2,200건 인입, 타겟 문의 31.8% 종결)
-- rule-based + LLM-as-a-judge 멀티턴 평가 파이프라인
-- Debian 계열 커스텀 OS 역공학, 빌드 200분 → 15분
-
-📝 [기술 블로그](https://blog-steel-ten-13.vercel.app/)
+📝 [기술 블로그 · 개발자국](https://blog-steel-ten-13.vercel.app/)
 📄 [이력서](https://harsh-wavelength-48b.notion.site/Kim-Hwansu-edit-2df2e74ce621809eb6fad67a45fb103f?source=copy_link)
+
+## 경력
+
+| 기간 | 회사 · 역할 | 주요 업무 |
+|---|---|---|
+| 2025.06 – 2025.10 | 마플코퍼레이션 · AI Application Engineer | CX 챗봇 설계·개발·배포 |
+| 2024.12 – 2025.02 | 비해피 · 소프트웨어 엔지니어 | 개발 인프라 및 배포 환경 구축 |
+| 2021.11 – 2024.01 | 아홉 · 소프트웨어 엔지니어 | 보안 및 저수준 엔지니어링 |
+
+## 주요 성과
+
+- **CX 챗봇** — 주간 인입 2,200건 중 타겟 문의의 31.8%, 전체의 15% 자동 처리
+  - prompt engineering, rule-based + LLM-as-a-judge 멀티턴 평가 파이프라인, 레거시 시스템 이식
+- **OS 디버깅 환경 자동화** — Debian 계열 커스텀 OS 역공학, 빌드 및 연결 시간 200분 → 15분
+- **보안 프로젝트 리딩** — 12개월 예정 프로젝트를 2개월에 완료 (PKCS#5, KISA 인증)
 
 ## 지금 관심 있는 문제
 
-- LLM / AI agent 의 성능을 떨어뜨리는 안티 패턴
-- LLM의 한계를 극복할 수 있는 방법 
-    - scored-web-search
-    - 프로젝트 문서 관리 탬플릿
-    - ISO/IEC 을 통한 개발자 의도의 정리
-    - Test는 reasoning으로 학습하기 어려운 이유와 극복 방법
-- GPU Cluster에서 LLM 서빙
-- KVCache 선택적 사용 / 삭제 / 편집 (순수 흥미)
+- LLM / AI agent의 성능을 떨어뜨리는 안티 패턴 — context rot, 지시와 report 사이에서 손실되는 정보
+- agent harness, 그리고 지금 만들고 있는 harness의 유통 기한
+- AI agent 실행 trace 분석과 정적 분석
+- 왜 AI가 작성한 테스트는 별로일까?
+- KV-cache 최적화·조작과 AI agent 비용 절감
+- CS 기초 복습
 
 ## Projects & Experiments
 
@@ -30,11 +37,11 @@
 
 > 인용수, 좋아요 수 등 heuristic 정보를 바탕으로 저품질 소스를 web에서 걸러주는 skill
 
-`web-search`의 맹점을 저렴하게 해결한 skill입니다. 
+`web-search`의 맹점을 저렴하게 해결한 skill입니다.
 
-- 웹 검색의 품질 문제를 hueristic하게 해결
+- 웹 검색의 품질 문제를 heuristic하게 해결
 - RAG의 knowledge conflict, context rot 완화
-- 겸사겸사 비용도 11% 절감 
+- 겸사겸사 비용도 11% 절감
 
 #### 메인 아이디어 & 성과
 
