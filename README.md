@@ -41,6 +41,19 @@
 - 메인 에이전트가 읽는 source 수를 실험에서 약 1/10로 축소
 - sub-agent overhead를 포함한 전체 비용은 약 11.1% 감소
 
+### [RL로 prompt injection 공격자 학습시키기](https://blog-steel-ten-13.vercel.app/posts/how-many-epoch-do-i-need)
+
+> 방어가 강한 모델도, RL로 학습한 공격자 앞에서는 어디서 뚫릴까?
+
+RL Hammer 논문을 따라 Llama 3.1 8B Instruct를 GRPO로 학습시켜, Qwen 3.8 27B(AgentDojo ASR 2.6%)의 prompt injection 방어를 뚫을 수 있는지 확인한 실험입니다. 이틀 동안 $30 크레딧 안에서 진행했습니다.
+
+- 2 epoch 만에 ASR 1.2% → 35.2%
+- 4bit 양자화 대상으로 학습한 공격자가 bf16 원본에서도 ASR 38.5%
+- 학습에 쓰지 않은 공격 지시·사용자 입력으로 테스트셋을 분리해, 처음 보는 지시에 대한 공격 성능을 측정
+- epoch당 비용 $10 → $8 (H200, 대상 모델 4bit 양자화, batch·gradient accumulation 조정)
+- 한계: 공격 목표별 편향(0.7% ~ 62.0%), epoch 2의 mode collapse 조짐
+- 부산물: AgentDyn의 utility false negative 버그 수정 PR ([SaFo-Lab/AgentDyn#9](https://github.com/SaFo-Lab/AgentDyn/pull/9))
+
 ### [Network Analysis](https://github.com/Doggy-Footprint/Network-Analysis)
 
 > 내 코드 베이스는 AI agent가 작업하기 좋은 환경일까?
@@ -60,18 +73,6 @@
 `code explore`의 동작을 모방하는 network를 통해 분석을 시도했으나, agentic runtime이 업데이트 되는 것을 보고 방향성을 포기함.
 의존성 + framework 기반 정보 및 git diff 등을 통해 AI agent에 **제안**할 병목 지점을 전달.
 
-### [RL로 prompt injection 공격자 학습시키기](https://blog-steel-ten-13.vercel.app/posts/how-many-epoch-do-i-need)
-
-> 방어가 강한 모델도, RL로 학습한 공격자 앞에서는 어디서 뚫릴까?
-
-RL Hammer 논문을 따라 Llama 3.1 8B Instruct를 GRPO로 학습시켜, Qwen 3.8 27B(AgentDojo ASR 2.6%)의 prompt injection 방어를 뚫을 수 있는지 확인한 실험입니다. 이틀 동안 $30 크레딧 안에서 진행했습니다.
-
-- 2 epoch 만에 ASR 1.2% → 35.2%
-- 4bit 양자화 대상으로 학습한 공격자가 bf16 원본에서도 ASR 38.5%
-- 학습에 쓰지 않은 공격 지시·사용자 입력으로 테스트셋을 분리해, 처음 보는 지시에 대한 공격 성능을 측정
-- epoch당 비용 $10 → $8 (H200, 대상 모델 4bit 양자화, batch·gradient accumulation 조정)
-- 한계: 공격 목표별 편향(0.7% ~ 62.0%), epoch 2의 mode collapse 조짐
-- 부산물: AgentDyn의 utility false negative 버그 수정 PR ([SaFo-Lab/AgentDyn#9](https://github.com/SaFo-Lab/AgentDyn/pull/9))
 
 ## 실패에서 시작된 작업들
 
