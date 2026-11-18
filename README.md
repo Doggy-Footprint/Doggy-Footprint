@@ -18,11 +18,9 @@
 
 ## 지금 관심 있는 문제
 
-- LLM / AI agent의 성능을 떨어뜨리는 안티 패턴 — context rot, 지시와 report 사이에서 손실되는 정보
-- agent harness, 그리고 지금 만들고 있는 harness의 유통 기한
-- AI agent 실행 trace 분석과 정적 분석
-- 왜 AI가 작성한 테스트는 별로일까?
-- Evaluation & LLM Judge
+- LLM / AI agent의 성능을 떨어뜨리는 안티 패턴 & 새로운 접근 방식들
+- 왜 AI가 작성한 테스트는 별로일까? (reasoning)
+- AI agent Trace / Evaluation & LLM Judge
 - SW 아키텍처
 - long-horizon task
 - iteration으로 skill 발전시키기 ([skill-creator](https://github.com/anthropics/skills/tree/main/skills/skill-creator))
@@ -66,7 +64,7 @@
 
 RL Hammer 논문을 따라 Llama 3.1 8B Instruct를 GRPO로 학습시켜, Qwen 3.8 27B(AgentDojo ASR 2.6%)의 prompt injection 방어를 뚫을 수 있는지 확인한 실험입니다. 이틀 동안 $30 크레딧 안에서 진행했습니다.
 
-- 2 epoch 만에 ASR 1.2% → 35.2%
+- 2 epoch - ASR 1.2% → 35.2%
 - 4bit 양자화 대상으로 학습한 공격자가 bf16 원본에서도 ASR 38.5%
 - 학습에 쓰지 않은 공격 지시·사용자 입력으로 테스트셋을 분리해, 처음 보는 지시에 대한 공격 성능을 측정
 - epoch당 비용 $10 → $8 (H200, 대상 모델 4bit 양자화, batch·gradient accumulation 조정)
@@ -108,7 +106,7 @@ RL Hammer 논문을 따라 Llama 3.1 8B Instruct를 GRPO로 학습시켜, Qwen 3
 이 경험은 `scored-web-search`, 문서 관리 템플릿, `network-analysis`의 출발점이 됐습니다.
 26년 들어서 개발 속도가 더 빨라졌습니다. 그래서 기존의 **돌다리도 두드려보고 건넌다**를 버리고, **빠르게 만들고, 실패하거나 버그가 생기면 그걸 새로운 기능**으로 만들기로 했습니다.
 
-지금은 그렇게 빠르게 만든 결과물이 정말 나아졌는지 증명하는 평가(Evaluation & LLM Judge, iteration)에 관심이 있습니다.
+지금은 그렇게 빠르게 만든 결과물이 정말 나아졌는지 증명하는 평가(Evaluation & LLM Judge, iteration)을 적용해보고 있지만, 예산과 규모에서 어려움이 있습니다. 
 
 ## Working principles
 
